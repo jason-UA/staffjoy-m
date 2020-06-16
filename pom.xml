@@ -19,6 +19,8 @@
 	<modules>
 		<module>auth-svc</module>
 		<module>common-lib</module>
+		<module>gateway</module>
+		<module>account-svc</module>
 	</modules>
 
 	<dependencyManagement>

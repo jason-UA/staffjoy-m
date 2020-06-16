@@ -1,0 +1,23 @@
+
+server:
+  port: 8301
+
+spring:
+  application:
+    name: staffjoy-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: account
+          uri: http://localhost:8101
+          predicates:
+            - Path=/account/*
+        - id: auth
+          uri: http://localhost:8201
+          predicates:
+            - Path=/auth/*
+      default-filters:
+        - StripPrefix=1
+
+
+
