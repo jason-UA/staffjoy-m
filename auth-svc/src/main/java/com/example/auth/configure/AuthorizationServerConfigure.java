@@ -36,7 +36,9 @@ public class AuthorizationServerConfigure extends AuthorizationServerConfigurerA
                 .withClient("febs")
                 .secret(passwordEncoder.encode("123456"))
                 .authorizedGrantTypes("password", "refresh_token")
-                .scopes("all");
+                .scopes("all")
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(3600);
     }
 
     @Override

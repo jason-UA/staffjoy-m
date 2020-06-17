@@ -11,11 +11,11 @@ spring:
         - id: account
           uri: http://localhost:8101
           predicates:
-            - Path=/account/*
+            - Path=/account/**
         - id: auth
           uri: http://localhost:8201
           predicates:
-            - Path=/auth/*
+            - Path=/auth/**
       default-filters:
         - StripPrefix=1
 
