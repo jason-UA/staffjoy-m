@@ -1,9 +1,9 @@
 package com.example.auth.service;
 
-import com.example.auth.dto.AuthUser;
+import com.example.auth.dmo.AuthUser;
+import com.example.common.dto.DetailUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,7 +23,7 @@ public class AuthUserDetailsService implements UserDetailsService {
         user.setUsername(username);
         user.setPassword(this.passwordEncoder.encode("123456"));
 
-        return new User(username, user.getPassword(), user.isEnabled(),
+        return new DetailUser(12, username, user.getPassword(), user.isEnabled(),
                 user.isAccountNonExpired(), user.isCredentialsNonExpired(),
                 user.isAccountNonLocked(), AuthorityUtils.commaSeparatedStringToAuthorityList("user:add"));
     }

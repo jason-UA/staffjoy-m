@@ -6,10 +6,10 @@ spring:
   application:
     name: staffjoy-account
 
-security:
-  oauth2:
-    resource:
-      id: ${spring.application.name}
-      user-info-uri: http://localhost:8201/user
+#security:
+#  oauth2:
+#    resource:
+#      id: ${spring.application.name}
+#      user-info-uri: http://localhost:8201/user
 #    authorization:
 #      check-token-access: http://localhost:8201/oauth/check_token

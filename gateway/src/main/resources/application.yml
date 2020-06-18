@@ -16,6 +16,10 @@ spring:
           uri: http://localhost:8201
           predicates:
             - Path=/auth/**
+        - id: commpay
+          uri: http://localhost:8401
+          predicates:
+            - Path=/commpay/**
       default-filters:
         - StripPrefix=1
 

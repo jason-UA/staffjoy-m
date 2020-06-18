@@ -1,4 +1,4 @@
-package com.example.auth.configure;
+package com.example.company.config;
 
 import com.example.common.handler.StaffjoyAccessDeniedHandler;
 import com.example.common.handler.StaffjoyAuthExceptionEntryPoint;
@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 @Configuration
 @EnableResourceServer
-public class AuthWebResourceServerConfigure extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
 
     @Autowired
     private StaffjoyAccessDeniedHandler accessDeniedHandler;
