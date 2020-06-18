@@ -20,7 +20,7 @@ public class CustomAccessTokenEnhancer implements TokenEnhancer {
             if (principal instanceof DetailUser) {
                 Map<String, Object> additionalInfo = new HashMap<>();
                 DetailUser detailUser = (DetailUser) principal;
-                additionalInfo.put("userID", detailUser.getUserID());
+                additionalInfo.put("user_id", detailUser.getUserID());
                 ((DefaultOAuth2AccessToken) oAuth2AccessToken).setAdditionalInformation(additionalInfo);
             }
         }

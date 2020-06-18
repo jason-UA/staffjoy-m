@@ -15,7 +15,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
-public class StaffjoyAuthExceptionConfigure {
+public class StaffjoyAuthConfigure {
 
     @Bean
     @ConditionalOnMissingBean(name = "accessDeniedHandler")
@@ -55,4 +55,6 @@ public class StaffjoyAuthExceptionConfigure {
     public TokenEnhancer tokenEnhancer() {
         return new CustomAccessTokenEnhancer();
     }
+
+
 }
