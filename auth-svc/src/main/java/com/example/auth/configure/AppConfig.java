@@ -1,10 +1,10 @@
 package com.example.auth.configure;
 
-import com.example.common.configure.StaffjoyRestConfig;
+import com.example.common.configure.StaffjoyAuthRestConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-@Import(StaffjoyRestConfig.class)
+@Import(StaffjoyAuthRestConfig.class)
 @Configuration
 public class AppConfig {
 }

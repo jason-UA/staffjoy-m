@@ -14,9 +14,4 @@ public class HelloController {
         return "hello! this is auth-svc";
     }
 
-    @GetMapping("user")
-    public Principal currentUser(Principal principal) {
-        return principal;
-    }
-
 }

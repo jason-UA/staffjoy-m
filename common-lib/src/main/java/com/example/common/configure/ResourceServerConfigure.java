@@ -1,4 +1,4 @@
-package com.example.company.config;
+package com.example.common.configure;
 
 import com.example.common.handler.StaffjoyAccessDeniedHandler;
 import com.example.common.handler.StaffjoyAuthExceptionEntryPoint;
