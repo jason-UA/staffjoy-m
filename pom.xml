@@ -22,6 +22,7 @@
 		<module>gateway</module>
 		<module>account-svc</module>
         <module>company-svc</module>
+        <module>account-api</module>
     </modules>
 
 	<dependencyManagement>

@@ -1,7 +1,14 @@
-
-server:
-  port: 8101
-
 spring:
+  profiles:
+    active: dev
   application:
-    name: staffjoy-account
+    name: account-service
+
+  datasource:
+    url: ${ACCOUNT_DATASOURCE_URL}
+    username: ${ACCOUNT_DATASOURCE_USERNAME}
+    password: ${ACCOUNT_DATASOURCE_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate

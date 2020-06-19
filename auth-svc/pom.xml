@@ -18,8 +18,11 @@
             <groupId>com.example</groupId>
             <artifactId>common-lib</artifactId>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>account-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 

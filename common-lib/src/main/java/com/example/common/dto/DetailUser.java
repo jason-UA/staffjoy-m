@@ -9,15 +9,15 @@ import java.util.Collection;
 @Getter
 public class DetailUser extends User {
 
-    private String userID;
+    private Long userID;
 
 
-    public DetailUser(String userID, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public DetailUser(Long userID, String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
         this.userID = userID;
     }
 
-    public DetailUser(String userID, String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+    public DetailUser(Long userID, String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
         this.userID = userID;
     }

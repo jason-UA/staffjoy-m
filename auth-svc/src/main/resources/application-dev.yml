@@ -1,0 +1,7 @@
+
+server:
+  port: 8201
+
+
+staffjoy:
+  account-service-endpoint: http://localhost:8101

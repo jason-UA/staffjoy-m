@@ -19,6 +19,9 @@ public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
     @Autowired
     private StaffjoyAuthExceptionEntryPoint authExceptionEntryPoint;
 
+    @Autowired
+    StaffjoyProps staffjoyProps;
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -27,6 +30,7 @@ public class ResourceServerConfigure extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .and()
                 .authorizeRequests().antMatchers("/actuator/**").permitAll()
+                .antMatchers(staffjoyProps.getPermitUrls()).permitAll()
                 .antMatchers("/**").authenticated()
                 .and().httpBasic();
     }

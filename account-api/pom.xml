@@ -9,15 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>company-svc</artifactId>
-    <name>Staffjoy-company</name>
+    <artifactId>account-api</artifactId>
+    <name>Staffjoy-account-api</name>
     <version>1.0.0</version>
+
     <dependencies>
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>common-lib</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>

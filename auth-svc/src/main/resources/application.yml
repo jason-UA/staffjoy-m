@@ -1,8 +1,13 @@
-
-
-server:
-  port: 8201
-
 spring:
+  profiles:
+    active: dev
   application:
     name: staffjoy-auth
+
+
+staffjoy:
+  common:
+    permitUrls:
+      - /register
+    deploy-env: ${DEPLOY:V2}
+  account-service-endpoint: ${ACCOUNT_SERVICE_ENDPOINT:http://account-servie:8080}
