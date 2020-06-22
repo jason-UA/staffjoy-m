@@ -12,3 +12,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+
+staffjoy:
+  common:
+    deploy-env: ${DEPLOY:V2}
+  email-service-endpoint: ${EMAIL_SERVICE_ENDPOINT:http://email-service:8080}
+  signing-secret: ${SIGNING_SECRET}

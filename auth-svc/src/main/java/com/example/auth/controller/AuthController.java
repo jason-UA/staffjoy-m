@@ -20,6 +20,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public GenericAccountResponse register(@RequestBody @Valid CreateAccountRequest request) {
-       return  accountClient.CreateAccount(request);
+       return  accountClient.createAccount(request);
     }
 }

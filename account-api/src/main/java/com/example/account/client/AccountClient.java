@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 public interface AccountClient {
     @PostMapping("/create")
-    public GenericAccountResponse CreateAccount(@RequestBody @Valid CreateAccountRequest request);
+    public GenericAccountResponse createAccount(@RequestBody @Valid CreateAccountRequest request);
 
     @PostMapping("/security_account")
     public SecurityAccountResponse securityAccount(@RequestBody @Valid SecurityRequest request);

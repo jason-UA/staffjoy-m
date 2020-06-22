@@ -18,7 +18,7 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/create")
-    public GenericAccountResponse CreateAccount(@RequestBody @Valid CreateAccountRequest request) {
+    public GenericAccountResponse createAccount(@RequestBody @Valid CreateAccountRequest request) {
         AccountDto accountDto = accountService.create(request.getName(), request.getEmail(), request.getPhoneNumber(), request.getPassword());
         GenericAccountResponse response = new GenericAccountResponse(accountDto);
         return response;
@@ -29,6 +29,11 @@ public class AccountController {
         SecurityAccountDto accountDto = accountService.securityAccountByEmail(request.getEmail());
         SecurityAccountResponse response = new SecurityAccountResponse(accountDto);
         return response;
+    }
+
+    @GetMapping("/activate")
+    public GenericAccountResponse activateAccount(@RequestParam(value="activate_token", required = false) String activateToken) {
+        return accountService.activateAccount(activateToken);
     }
 
 

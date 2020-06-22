@@ -1,0 +1,12 @@
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: mail-service
+
+staffjoy:
+  common:
+    deploy-env: ${DEPLOY:V2}
+  aliyun-access-key: ${ALIYUN_ACCESS_KEY}
+  aliyun-access-secret: ${ALIYUN_ACCESS_SECRET}

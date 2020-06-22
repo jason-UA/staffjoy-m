@@ -23,6 +23,9 @@
 		<module>account-svc</module>
         <module>company-svc</module>
         <module>account-api</module>
+        <module>mail-api</module>
+		<module>mail-svc</module>
+        <module>company-api</module>
     </modules>
 
 	<dependencyManagement>

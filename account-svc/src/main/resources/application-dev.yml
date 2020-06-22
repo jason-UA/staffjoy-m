@@ -17,3 +17,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+staffjoy:
+  email-service-endpoint: http://localhost:8501
+

@@ -1,7 +1,4 @@
 
-server:
-  port: 8301
-
 spring:
   application:
     name: staffjoy-gateway

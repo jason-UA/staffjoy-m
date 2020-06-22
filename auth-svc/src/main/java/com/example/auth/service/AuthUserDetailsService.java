@@ -19,35 +19,16 @@ import org.springframework.stereotype.Service;
 public class AuthUserDetailsService implements UserDetailsService {
 
     @Autowired
-    AccountClient accountClient;
+    SecurityAccountService accountService;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SecurityAccountResponse accountResponse = null;
-        try {
-            accountResponse = accountClient.securityAccount(SecurityRequest.builder().email(username).build());
-        } catch (Exception ex) {
-            String errMsg = "unable to get account";
-            handleErrorAndThrowException(ex, errMsg);
-        }
-        if (!accountResponse.isSuccess()) {
-            handleErrorAndThrowException(accountResponse.getMessage());
-        }
-        SecurityAccountDto accountDto = accountResponse.getAccount();
+        SecurityAccountDto accountDto = accountService.securityAccountByEmail(username);
 
         return new DetailUser(accountDto.getId(), accountDto.getEmail(), accountDto.getPassword(), accountDto.isEnabled(),
                 accountDto.isAccountNonExpired(), accountDto.isCredentialsNonExpired(),
                 accountDto.isAccountNonLocked(), AuthorityUtils.commaSeparatedStringToAuthorityList(accountDto.getRole().name()));
     }
 
-    void handleErrorAndThrowException(String errMsg) {
-        log.error(errMsg);
-        throw new ServiceException(errMsg);
-    }
-
-    void handleErrorAndThrowException(Exception ex, String errMsg) {
-        log.error(errMsg, ex);
-        throw new ServiceException(errMsg, ex);
-    }
 }

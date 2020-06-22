@@ -1,7 +1,9 @@
 
-server:
-  port: 8401
-
 spring:
   application:
     name: staffjoy-company
+
+
+staffjoy:
+  common:
+    deploy-env: ${DEPLOY:V2}
