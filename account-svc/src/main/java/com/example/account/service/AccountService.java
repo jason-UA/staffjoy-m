@@ -4,13 +4,13 @@ package com.example.account.service;
 import com.example.account.AccountConstant;
 import com.example.account.crypto.Sign;
 import com.example.account.dto.AccountDto;
-import com.example.account.dto.GenericAccountResponse;
 import com.example.account.dto.SecurityAccountDto;
 import com.example.account.dto.UserRole;
 import com.example.account.model.Account;
 import com.example.account.props.AppProps;
 import com.example.account.repository.AccountRepository;
 import com.example.common.api.BaseResponse;
+import com.example.common.api.ResultCode;
 import com.example.common.env.EnvConfig;
 import com.example.common.error.ServiceException;
 import com.example.mail.client.MailClient;
@@ -18,7 +18,6 @@ import com.example.mail.dto.EmailRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -26,7 +25,6 @@ import org.springframework.util.StringUtils;
 import javax.transaction.Transactional;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -129,17 +127,16 @@ public class AccountService {
 
     public SecurityAccountDto securityAccountByEmail(String email) {
         Account account = accountRepository.findAccountByEmail(email);
-        return convertToDeo(account);
+        return convertToSecurityDto(account);
     }
 
-    public GenericAccountResponse activateAccount(String token) {
+    public void activateAccount(String token) {
         Map<String, String> map = Sign.verifyEmailConfirmationToken(token, appProps.getSigningSecret());
         String userId = map.get("user_id");
-        String email = map.get("email");
-//        Account account = accountRepository.findAccountById(Long.valueOf(userId).longValue());
-//        AccountDto accountDto = convertToDto(account);
-
-        return null;
+        int affected = accountRepository.activateAccountById(Long.valueOf(userId));
+        if (affected != 1) {
+            throw new ServiceException(ResultCode.NOT_FOUND, "user with specified id not found");
+        }
     }
 
     private void sendEmail(Long userId, String email, String name, String subject, String template, boolean activateOrConfirm) {
@@ -197,7 +194,7 @@ public class AccountService {
         return modelMapper.map(account, AccountDto.class);
     }
 
-    private SecurityAccountDto convertToDeo(Account account) {
+    private SecurityAccountDto convertToSecurityDto(Account account) {
         return modelMapper.map(account, SecurityAccountDto.class);
     }
 }

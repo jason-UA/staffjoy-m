@@ -20,8 +20,8 @@ public class Sign {
 
     public static Map<String, String> verifyEmailConfirmationToken(String tokenString, String signingToken) {
         Map<String, String> map = new HashMap<String, String>();
-        String[] pieces =  tokenString.split("$");
-        if (pieces.length != 2) {
+        String[] pieces =  tokenString.split("#");
+        if (pieces.length != 3) {
             throw new ServiceException("incorrent token");
         }
         map.put("user_id", pieces[0]);

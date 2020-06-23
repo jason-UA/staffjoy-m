@@ -9,6 +9,7 @@ staffjoy:
   common:
     permitUrls:
       - /register
+      - /activate
     deploy-env: ${DEPLOY:V2}
   signing-secret: ${SIGNING_SECRET}
   account-service-endpoint: ${ACCOUNT_SERVICE_ENDPOINT:http://account-servie:8080}

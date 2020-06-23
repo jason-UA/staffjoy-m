@@ -3,6 +3,8 @@ package com.example.account.controller;
 
 import com.example.account.dto.*;
 import com.example.account.service.AccountService;
+import com.example.common.api.BaseResponse;
+import com.example.common.api.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +34,9 @@ public class AccountController {
     }
 
     @GetMapping("/activate")
-    public GenericAccountResponse activateAccount(@RequestParam(value="activate_token", required = false) String activateToken) {
-        return accountService.activateAccount(activateToken);
+    public BaseResponse activateAccount(@RequestParam(value="activate_token") String activateToken) {
+        accountService.activateAccount(activateToken);
+        return new BaseResponse("activate account successful!", ResultCode.SUCCESS);
     }
 
 
