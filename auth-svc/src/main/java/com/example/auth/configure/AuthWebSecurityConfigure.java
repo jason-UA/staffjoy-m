@@ -22,6 +22,9 @@ public class AuthWebSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private EmailSecurityConfigurerAdapter emailSecurityConfigurerAdapter;
+
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
@@ -29,14 +32,16 @@ public class AuthWebSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
-                .antMatchers("/oauth/**")
+        http
+
+                .authorizeRequests()
+                .antMatchers("/email/token").permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/oauth/**")
-                .authenticated()
+                .anyRequest().authenticated()
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+                .apply(emailSecurityConfigurerAdapter);
     }
 
     @Override

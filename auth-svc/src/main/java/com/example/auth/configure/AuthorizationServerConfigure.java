@@ -58,22 +58,4 @@ public class AuthorizationServerConfigure extends AuthorizationServerConfigurerA
                 .authenticationManager(authenticationManager);
 
     }
-//
-//    @Bean
-//    TokenStore tokenStore() {
-//        return new JwtTokenStore(jwtAccessTokenConverter());
-//    }
-//
-//
-//    @Bean
-//    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-//        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-//        DefaultAccessTokenConverter defaultAccessTokenConverter = (DefaultAccessTokenConverter)
-//                jwtAccessTokenConverter.getAccessTokenConverter();
-//        DefaultUserAuthenticationConverter userAuthenticationConverter = new DefaultUserAuthenticationConverter();
-//        userAuthenticationConverter.setUserDetailsService(userDetailsService);
-//        defaultAccessTokenConverter.setUserTokenConverter(userAuthenticationConverter);
-//        jwtAccessTokenConverter.setSigningKey("febs");
-//        return jwtAccessTokenConverter;
-//    }
 }
